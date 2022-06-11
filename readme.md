@@ -1,4 +1,6 @@
-# Musicalizador: Trabajo Practico Final Pensamiento Computacional
+# Musicalizador
+
+## Trabajo Practico Final Pensamiento Computacional
 
 ## Integrantes: 
 
