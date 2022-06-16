@@ -1,9 +1,9 @@
 import music_sheet_reader
-import note_frequency
+import notes
 
 class Synthesizer:
     def __init__(self, file1):
-        self.notes = note_frequency.note_frequency
+        self.notes = notes.notes_mapping
         self.file1 = file1
 
     def translate(self):
@@ -14,3 +14,4 @@ class Synthesizer:
             frequencies.append(frequency)
         return frequencies
         
+# aca cambia como itero sobre las notas...
