@@ -1,0 +1,20 @@
+import argparse
+
+from sintetizador import sintetizar
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description='sintetizador')
+    parser.add_argument('-f', '--frecuencia', help='frecuencia')
+    parser.add_argument('-i', '--instrumento', help='instrumento')
+    parser.add_argument('-p', '--partitura', help='partitura')
+    parser.add_argument('-o', '--output', help='audio.wav')
+
+    arg = parser.parse_args()
+
+    sintetizar(arg.frecuencia, arg.instrumento, arg.partitura, arg.output)
+
+if __name__ == '__main__':
+    main()
+
+
+    

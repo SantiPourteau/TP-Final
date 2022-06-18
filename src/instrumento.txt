@@ -1,0 +1,7 @@
+3
+1 5
+2 5
+3 5
+ataque 0.2
+sostenido 1
+decaimiento 1
