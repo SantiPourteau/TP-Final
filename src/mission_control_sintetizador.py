@@ -1,6 +1,9 @@
 import argparse
 
+
+
 def sintetizar(frecuencia, instrumento, partitura, output):
+    #aca se crean todos los objectos y se utilizan sus metodos
     pass
 
 def main() -> None:
