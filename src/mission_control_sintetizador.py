@@ -1,6 +1,7 @@
 import argparse
 
-from sintetizador import sintetizar
+def sintetizar(frecuencia, instrumento, partitura, output):
+    pass
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='sintetizador')

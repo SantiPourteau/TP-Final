@@ -1,6 +1,7 @@
 import argparse
-from metalofon import interactuar
 
+def interactuar(partitura,dispositivo):
+    pass
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='metalofon')

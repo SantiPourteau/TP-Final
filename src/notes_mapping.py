@@ -88,3 +88,6 @@ notes_mapping = [
     ("Bb0", 29.1353),
     ("A0", 27.5000),
 ]
+
+notes_mapping_dict= dict(notes_mapping)
+
