@@ -16,7 +16,10 @@ class Instrument():
                 
                 if contador==self.nro_armonicos+2:
                     self.sustain=line.split()[0]
-                    self.sustain_parametro=line.split()[1]
+                    try:
+                        self.sustain_parametro=line.split()[1]
+                    except IndexError:
+                        self.sustain_parametro=None
                 
                 if contador==self.nro_armonicos+3:
                     self.decay=line.split()[0]
