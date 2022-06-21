@@ -1,8 +1,8 @@
 from note_obj import Note
 
-class Partitura():
-    def __init__(self, txt_partitura):
-        with open(txt_partitura) as f:
+class Music_Sheet():
+    def __init__(self, txt_sheet):
+        with open(txt_sheet) as f:
             for line in f:
                 self.time=line.split()[0]
                 self.note=line.split()[1]

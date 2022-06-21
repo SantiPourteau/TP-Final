@@ -1,4 +1,4 @@
-class Onda():
+class Wave():
     def __init__(self,fn):
         self.fn=fn
     
