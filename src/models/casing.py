@@ -8,22 +8,17 @@ class Casing():
         self.A=A
         self.instrument=instrument
         self.frequency=frequency
-        self.case=np.empty()
+        self.case=None
     
     def case(self,note):
-        #hacerle todo para q array con los valores que toma la funcion de abajo....
-        #tener en cuenta el muestro /freq
-        """
-        f(t)=self.A * self.instrument.get_harmonic_amplitude()[1] *sin(2*pi*note.get_frequency()*self.instrument.get_harmonic_amplitude()[0]*(t-note.get_time()))
-
-        for t in range(muestreo)
-            append a self.case [t,f(t)]
-
-        algo asi creo ajajaj
-        """
-        self.case
-        return 
+        time_array=np.arange(note.time(),note.get_time()+note.get_duration(),note.get_duration()/self.frequency)
+        freq_array=np.empty()
+        for time in time_array:
+            freq=self.A * self.instrument.get_harmonic_amplitude()[1] *sin(2*pi*note.get_frequency()*self.instrument.get_harmonic_amplitude()[0]*(time-note.get_time()))
+            freq_array.append(freq_array,freq)
         
+        self.case=np.array(time_array,freq_array)
+
     
     def get_wave(self):
         return Wave(self.case)
