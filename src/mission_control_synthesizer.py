@@ -1,10 +1,20 @@
 import argparse
 
+from src.models.casing import Casing
+from src.models.instrument_obj import Instrument
+from src.models.music_sheet_obj import Music_Sheet
+from src.models.synthesizer_obj import Synthesizer
 
+A=20 #constante que le da el volumen al instrumento ?!
 
-def sintetizar(frecuencia, instrumento, partitura, output):
-    #aca se crean todos los objectos y se utilizan sus metodos
-    pass
+def sintetizar(A,frequency, instrument_txt, music_sheet_txt, output):
+    instrument=Instrument(instrument_txt)
+    music_sheet=Music_Sheet(music_sheet_txt)
+    casing=Casing(instrument,A,frequency)
+    synthesizer=Synthesizer(output)
+
+    #arrancar a interactuar con los objetos...
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='sintetizador')
