@@ -2,7 +2,7 @@ import os
 
 class Instrument():
     def __init__(self, txt_instrumento):
-        with open (txt_instrumento) as f:
+        with open (txt_instrumento,"r") as f:
             counter=0
             for line in f:
                 if counter==0:

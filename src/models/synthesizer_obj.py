@@ -1,12 +1,12 @@
 from __future__ import annotations
 from models.wave_obj import Wave
-import scipy
+from scipy.io.wavfile import write
 
 class Synthesizer():
     def __init__(self,output_file):
         self.output_file=output_file
 
-    def synthesize(self,wave:Wave,frequency):
-        scipy.io.wavfile.write(self.output_file,frequency,wave.get_np_array())
+    def synthesize(self,waveform,frequency):
+        write(self.output_file,frequency,waveform)
         
         
