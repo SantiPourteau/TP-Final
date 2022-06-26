@@ -2,31 +2,35 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import numpy as np
 from math import pi, sin
-from models.instrument_obj import Instrument
+
 
 
 class Wave():
     def __init__(self,note):
         self.note=note
-        self.fn=None
+        self.time=[]
+        self.freq=[]
 
-    def get_np_array(self,instrument:Instrument,A:int):
+    def get_np_array(self,instrument,A:int):
         start=float(self.note.get_time()) 
         stop=float(self.note.get_time()+self.note.get_duration())
         step=0.001
-        time_array=np.arange(start,stop,step)
-        freq_list=[]
-        for time in time_array:
-            freq=A * instrument.get_harmonic_amplitude()[1] *sin(2*pi*self.note.get_frequency()*instrument.get_harmonic_amplitude()[0]*(time-self.note.get_time()))
-            freq_list.append(freq)
-        freq_array=np.array(freq_list)
-        self.fn=np.array(time_array,freq_array)
-        return self.fn
+        self.time=np.arange(start,stop,step)
+        
+        for time in self.time:
+            amp=float(instrument.get_harmonic_amplitude()[1])
+            n_arm=int(instrument.get_harmonic_amplitude()[0])
+            f=float(self.note.get_frequency())
+            st=float(self.note.get_time())
+            time=float(time)
+            freq=A*amp*sin(2*pi*f*n_arm*(time-st))
+            self.freq.append(freq)
+        return np.array(tuple(self.time),tuple(self.freq))
 
     def plot(self):
-        return plt.plot(self.fn[0],self.fn[1],color="black")
+        return plt.plot(self.time,self.freq,color="black")
 
-    def case_wave(self,intrument:Instrument):
+    def case_wave(self,intrument):
         pass
     
 
