@@ -1,5 +1,5 @@
 from notes_mapping import notes_mapping_dict
-import wave_obj
+import models.wave_obj
 
 class Note():
     def __init__(self,time,nota,duration):

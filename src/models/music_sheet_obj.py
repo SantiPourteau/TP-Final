@@ -1,4 +1,4 @@
-import note_obj
+import models.note_obj
 
 class Music_Sheet():
     def __init__(self, txt_sheet):

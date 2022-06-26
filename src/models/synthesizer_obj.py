@@ -1,5 +1,5 @@
 from __future__ import annotations
-from src.models.wave_obj import Wave
+from models.wave_obj import Wave
 import scipy
 
 class Synthesizer():

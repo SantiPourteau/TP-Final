@@ -4,10 +4,9 @@ import numpy as np
 from math import pi, sin
 from models.instrument_obj import Instrument
 
-from models.note_obj import Note
 
 class Wave():
-    def __init__(self,note:Note):
+    def __init__(self,note):
         self.note=note
         self.fn=None
 
