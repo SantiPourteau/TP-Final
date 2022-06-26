@@ -11,13 +11,13 @@ class Wave():
         self.fn=None
 
     def get_np_array(self,instrument:Instrument,A:int):
-        start=float(self.note.time()) 
+        start=float(self.note.get_time()) 
         stop=float(self.note.get_time()+self.note.get_duration())
         step=0.001
         time_array=np.arange(start,stop,step)
         freq_list=[]
         for time in time_array:
-            freq=self.A * self.instrument.get_harmonic_amplitude()[1] *sin(2*pi*self.note.get_frequency()*self.instrument.get_harmonic_amplitude()[0]*(time-self.note.get_time()))
+            freq=A * instrument.get_harmonic_amplitude()[1] *sin(2*pi*self.note.get_frequency()*instrument.get_harmonic_amplitude()[0]*(time-self.note.get_time()))
             freq_list.append(freq)
         freq_array=np.array(freq_list)
         self.fn=np.array(time_array,freq_array)
