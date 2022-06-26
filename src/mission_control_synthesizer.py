@@ -1,19 +1,24 @@
 import argparse
 
-from src.models.casing import Casing
-from src.models.instrument_obj import Instrument
-from src.models.music_sheet_obj import Music_Sheet
-from src.models.synthesizer_obj import Synthesizer
+from models.instrument_obj import Instrument
+from models.music_sheet_obj import Music_Sheet
+from models.synthesizer_obj import Synthesizer
 
 A=20 #constante que le da el volumen al instrumento ?!
 
 def sintetizar(A,frequency, instrument_txt, music_sheet_txt, output):
     instrument=Instrument(instrument_txt)
     music_sheet=Music_Sheet(music_sheet_txt)
-    casing=Casing(instrument,A,frequency)
     synthesizer=Synthesizer(output)
 
-    #arrancar a interactuar con los objetos...
+    note= music_sheet.get_note()
+    wave=note.get_wave()
+    wave.get_np_array(instrument,A)
+    wave.plot()
+    synthesizer.synthesize(wave,frequency)
+
+
+    
 
 
 def main() -> None:
@@ -28,6 +33,9 @@ def main() -> None:
     sintetizar(arg.frecuencia, arg.instrumento, arg.partitura, arg.output)
 
 if __name__ == '__main__':
+    sintetizar(20,440,"instrument.txt","partitura.txt","output.wav")
+
+
     main()
 
 

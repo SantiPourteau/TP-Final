@@ -1,4 +1,4 @@
-from note_obj import Note
+import note_obj
 
 class Music_Sheet():
     def __init__(self, txt_sheet):
@@ -7,7 +7,7 @@ class Music_Sheet():
                 time=line.split()[0]
                 note=line.split()[1]
                 duration=line.split()[2]
-                self.note=Note(time,note,duration)
+                self.note=note_obj.Note(time,note,duration)
                 
     def get_note(self):
         return self.note

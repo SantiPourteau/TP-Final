@@ -1,4 +1,5 @@
 from notes_mapping import notes_mapping_dict
+import wave_obj
 
 class Note():
     def __init__(self,time,nota,duration):
@@ -12,5 +13,9 @@ class Note():
         return self.time
     def get_duration(self):
         return self.duration
+    
+    def get_wave(self):
+        return wave_obj.Wave(self)
+    
     
 
