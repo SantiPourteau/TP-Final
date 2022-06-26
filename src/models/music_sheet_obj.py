@@ -7,7 +7,7 @@ class Music_Sheet():
                 time=line.split()[0]
                 note=line.split()[1]
                 duration=line.split()[2]
-                self.note=note_obj.Note(time,note,duration)
+                self.note=models.note_obj.Note(time,note,duration)
                 
     def get_note(self):
         return self.note

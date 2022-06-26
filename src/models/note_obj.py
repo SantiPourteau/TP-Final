@@ -15,7 +15,7 @@ class Note():
         return self.duration
     
     def get_wave(self):
-        return wave_obj.Wave(self)
+        return models.wave_obj.Wave(self)
     
     
 

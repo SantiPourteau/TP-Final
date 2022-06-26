@@ -1,5 +1,8 @@
+import os
+
 class Instrument():
     def __init__(self, txt_instrumento):
+        print(os.getcwd())
         with open (txt_instrumento) as f:
             counter=0
             for line in f:
