@@ -30,7 +30,10 @@ class Wave():
         st=float(self.note.get_time())
 
         # NumpPy magic
-        each_sample_number = np.arange(duration_s * sps)
+        each_sample_number = np.arange(st*sps,st+duration_s * sps) 
+
+        #esto funciona cuando la nota arranca en 0s pero cuando arranca en 1s no respeta el silencio. si respeta la duracion
+
         waveform = i * np.sin(2 * np.pi * m * (each_sample_number-st) * freq_hz / sps)
         #esta funcion va a ser sumatoria cuando tengamos mas harmonicos...el i y el m va a variar en un for loop
         waveform_quiet = waveform * 0.3 
