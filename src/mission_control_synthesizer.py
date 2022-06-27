@@ -13,8 +13,8 @@ def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
 
     note= music_sheet.get_note()
     wave=note.get_wave()
-    waveform=wave.get_waveform(instrument,20) #A=20 constante que le da el volumen al instrumento ?!
-    wave.plot()
+    waveform=wave.get_waveform(frequency,instrument) 
+    #aca falta case la wave q es lo q finalmente se sintetiza
     synthesizer.synthesize(waveform,frequency)
 
 def main() -> None:
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     sintetizar(44100,"instrument.txt","partitura.txt","output.wav")
 
 
-    main()
+    # main()
 
 
     
