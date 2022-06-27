@@ -36,6 +36,7 @@ class Wave():
         return self.waveform
 
     def case_wave(self,intrument):
+        #aca hacer el casing. es decir multiplicar waveform x funcion muduladora x A (constante de volumen del instrumento)
         pass
     
 
