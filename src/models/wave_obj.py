@@ -30,13 +30,16 @@ class Wave():
         # NumpPy magic
         each_sample_number = np.arange(duration_s * sps)
         waveform = i * np.sin(2 * np.pi * m * (each_sample_number-st) * freq_hz / sps)
-        waveform_quiet = waveform * 0.3
+        #esta funcion va a ser sumatoria cuando tengamos mas harmonicos...el i y el m va a variar en un for loop
+        waveform_quiet = waveform * 0.3 
         self.waveform = np.int16(waveform_quiet * 32767)
-        
+        #esto ultimo lo saque de internet asi q no pregunten
         return self.waveform
 
     def case_wave(self,intrument):
         #aca hacer el casing. es decir multiplicar waveform x funcion muduladora x A (constante de volumen del instrumento)
+        #aca vamos a tener que implementar un diccionario con todos los posibles moduladores y sus funciones
+        #https://scialicia.com/2018/08/python-frequency-modulation-with-numpy/
         pass
     
 

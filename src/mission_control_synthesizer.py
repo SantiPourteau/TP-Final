@@ -11,10 +11,11 @@ def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
     music_sheet=Music_Sheet(music_sheet_txt)
     synthesizer=Synthesizer(output)
 
+#esto va a ser un loop para cada nota de la partitura.
     note= music_sheet.get_note()
     wave=note.get_wave()
     waveform=wave.get_waveform(frequency,instrument) 
-    #aca falta case la wave q es lo q finalmente se sintetiza
+    #aca falta case la wave q es lo q finalmente se sintetiza -> wave.case()
     synthesizer.synthesize(waveform,frequency)
 
 def main() -> None:

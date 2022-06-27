@@ -9,6 +9,6 @@ class Synthesizer():
 
     def synthesize(self,waveform,frequency):
         write(self.output_file,frequency,waveform)
-        #hacer un save asi el proximo write appendea sobre lo hecho
+        #analisar despues si esta appendding o overwriting
         
         

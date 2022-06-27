@@ -8,7 +8,9 @@ class Music_Sheet():
                 note=line.split()[1]
                 duration=line.split()[2]
                 self.note=models.note_obj.Note(time,note,duration)
-                
+
+#aca va a tener que poder recibir muchas notas. asi q el self.note va a ser una lista de Notas
+
     def get_note(self):
         return self.note
 
