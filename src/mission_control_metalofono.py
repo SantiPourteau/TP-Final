@@ -5,6 +5,7 @@ from xylophone.server.server import XyloServer
 
 
 def interactuar(partitura,dispositivo):
+    #esto no funca... hay que pasarle bien los parametros a los objetos..
     server=XyloServer()
     server.start()
     client=XyloClient()
