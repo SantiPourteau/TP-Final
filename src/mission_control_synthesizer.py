@@ -7,16 +7,17 @@ from models.synthesizer_obj import Synthesizer
 
 
 def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
+    #aca creamos las instancias de los objetos
     instrument=Instrument(instrument_txt)
     music_sheet=Music_Sheet(music_sheet_txt)
     synthesizer=Synthesizer(output)
 
 #esto va a ser un loop para cada nota de la partitura.
-    note= music_sheet.get_note()
-    wave=note.get_wave()
-    waveform=wave.get_waveform(frequency,instrument) 
+    note= music_sheet.get_note() #aca se crea la instancia de nota
+    wave=note.get_wave() #aca se crea la instancia de wave
+    waveform=wave.get_waveform(frequency,instrument) #conseguimos el np array correspondiente
     #aca falta case la wave q es lo q finalmente se sintetiza -> wave.case()
-    synthesizer.synthesize(waveform,frequency)
+    synthesizer.synthesize(waveform,frequency) # lo escribimos en el wave file
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='sintetizador')

@@ -1,6 +1,7 @@
 import models.note_obj
 
 class Music_Sheet():
+    #music sheet va a guardar todas las notas del txt de partitura 
     def __init__(self, txt_sheet):
         with open(txt_sheet) as f:
             for line in f:

@@ -1,5 +1,6 @@
 
 class Instrument():
+    #instrument va a guardar todo lo que tiene el txt de instrument
     def __init__(self, txt_instrumento):
         with open (txt_instrumento,"r") as f:
             counter=0

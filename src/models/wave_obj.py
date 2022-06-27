@@ -4,6 +4,8 @@ import numpy as np
 
 
 class Wave():
+    #aca vamos a laburar la forma de la onda. y es donde conseguimos el np array que
+    #...despues vamos a subir al wave file
     def __init__(self, note):
         self.note = note
         self.waveform = None
