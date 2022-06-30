@@ -1,11 +1,8 @@
 from __future__ import annotations
-import matplotlib.pyplot as plt
 import numpy as np
 
 
 class Wave():
-    #aca vamos a laburar la forma de la onda. y es donde conseguimos el np array que
-    #...despues vamos a subir al wave file
     def __init__(self, note):
         self.note = note
         self.waveform = None
@@ -35,8 +32,8 @@ class Wave():
 
             waveform += i * np.sin(2 * np.pi * m * (each_sample_number-st) * freq_hz / sps)
         
-        waveform_quiet = waveform * 0.3 #investigar esta multiplicacion
-        self.waveform = np.int16(waveform_quiet * 32767) #investigar esta multiplicacion
+        waveform_quiet = waveform * 0.3 #contant A
+        self.waveform = np.int16(waveform_quiet * 32767) 
         return self.waveform
 
     def case_wave(self,intrument):
