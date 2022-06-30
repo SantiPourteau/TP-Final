@@ -20,25 +20,23 @@ class Wave():
         # Duration
         duration_s = float(self.note.get_duration())
 
-        #harmonic
-        i=float(instrument.get_harmonic_amplitude()[0])
-
-        #amp harmonic
-        m=float(instrument.get_harmonic_amplitude()[1])
-
         #start time
         st=float(self.note.get_time())
 
         # NumpPy magic
         each_sample_number = np.arange(st*sps,st+duration_s * sps) 
 
-        #esto funciona cuando la nota arranca en 0s pero cuando arranca en 1s no respeta el silencio. si respeta la duracion
 
-        waveform = i * np.sin(2 * np.pi * m * (each_sample_number-st) * freq_hz / sps)
-        #esta funcion va a ser sumatoria cuando tengamos mas harmonicos...el i y el m va a variar en un for loop
-        waveform_quiet = waveform * 0.3 
-        self.waveform = np.int16(waveform_quiet * 32767)
-        #esto ultimo lo saque de internet asi q no pregunten
+        waveform=0
+
+        for i in range(instrument.get_num_harmonics()): #addition of harmonics
+            #amp harmonic
+            m=float(instrument.get_respective_amplitude(i))
+
+            waveform += i * np.sin(2 * np.pi * m * (each_sample_number-st) * freq_hz / sps)
+        
+        waveform_quiet = waveform * 0.3 #investigar esta multiplicacion
+        self.waveform = np.int16(waveform_quiet * 32767) #investigar esta multiplicacion
         return self.waveform
 
     def case_wave(self,intrument):
