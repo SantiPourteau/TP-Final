@@ -20,7 +20,7 @@ class Wave():
             
             m=float(instrument.get_respective_amplitude(i)) #amp harmonic (multiplier)
 
-            waveform += m * np.sin(2 * np.pi * i * (each_sample_number-st) * freq_hz / sps) #wave equation with numpy
+            waveform += m * np.sin(2 * np.pi * i * each_sample_number * freq_hz / sps) #wave equation with numpy
         
             self.waveform=waveform
 
