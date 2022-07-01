@@ -1,3 +1,4 @@
-from src.mission_control_metalofono import interact, main
+from mission_control_metalofono import interact, main
 
-main()
+interact()
+#main()

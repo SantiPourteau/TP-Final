@@ -1,5 +1,5 @@
 import argparse
-from src.models.music_sheet_obj import Music_Sheet
+from models.music_sheet_obj import Music_Sheet
 from src.xylophone.xylophone.client import XyloClient
 from src.xylophone.xylophone.xylo import XyloNote
 from src.xylophone.xylophone.server.server import XyloServer
