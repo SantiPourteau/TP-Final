@@ -40,6 +40,8 @@ class Wave():
         #aca hacer el casing. es decir multiplicar waveform x funcion muduladora x A (constante de volumen del instrumento)
         #aca vamos a tener que implementar un diccionario con todos los posibles moduladores y sus funciones
         #https://scialicia.com/2018/08/python-frequency-modulation-with-numpy/
+
+        
         pass
     
 
