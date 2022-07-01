@@ -21,7 +21,7 @@ class Wave():
         st=float(self.note.get_time())
 
         # NumpPy magic
-        each_sample_number = np.arange(st*sps,st+duration_s * sps) 
+        each_sample_number = np.arange(st*sps,(st*sps+duration_s * sps)) 
 
 
         waveform=0
@@ -32,8 +32,8 @@ class Wave():
 
             waveform += i * np.sin(2 * np.pi * m * (each_sample_number-st) * freq_hz / sps)
         
-        waveform_quiet = waveform * 0.3 #contant A
-        self.waveform = np.int16(waveform_quiet * 32767) 
+            self.waveform=waveform
+
         return self.waveform
 
     def case_wave(self,intrument):

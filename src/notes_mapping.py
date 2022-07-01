@@ -1,4 +1,7 @@
+#al fondo se convierte esto en un diccionario...
+
 notes_mapping = [
+    ("None",0), #para los vacios de sonido
     ("C8", 4186.01),
     ("B7", 3951.07),
     ("Bb7", 3729.31),
