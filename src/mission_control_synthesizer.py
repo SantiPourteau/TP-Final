@@ -7,28 +7,26 @@ from models.synthesizer_obj import Synthesizer
 
 
 def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
-    #aca creamos las instancias de los objetos
+    #object instances created
     instrument=Instrument(instrument_txt)
     music_sheet=Music_Sheet(music_sheet_txt)
     synthesizer=Synthesizer(output)
 
-    
-#esto va a ser un loop para cada nota de la partitura.
     contador=0
-    for note in music_sheet.get_note():
-        wave=note.get_wave() #aca se crea la instancia de wave
-        waveform=wave.get_waveform(frequency,instrument) #conseguimos el np array correspondiente
-        #aca falta case la wave q es lo q finalmente se sintetiza -> wave.case()
+    for note in music_sheet.get_note(): #loop for each note already sorted and including silence notes
+        wave=note.get_wave() #instance of wave created
+        waveform=wave.get_waveform(frequency,instrument) #get waveform
+        waveform=wave.case_wave(instrument) #case that same waveform
         if contador==0:
             waveform1=waveform
         if contador>0:
-            waveform1=np.append(waveform1,waveform)
+            waveform1=np.append(waveform1,waveform) #appending notes in one same waveform
         contador+=1
         
-    waveform_quiet = waveform1 * 0.3 #contant A
-    waveform = np.int16(waveform_quiet * 32767) 
+    waveform_quiet = waveform1 * 0.3 #contant A to manage instrument volume
+    waveform = np.int16(waveform_quiet * 32767) #scaling amplitude (omiting this would round all amps to 0 when written in wav file)
 
-    synthesizer.synthesize(waveform,frequency) # lo escribimos en el wave file
+    synthesizer.synthesize(waveform,frequency) #write in wave file through synthesizer
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='sintetizador')
@@ -42,10 +40,10 @@ def main() -> None:
     sintetizar(arg.frecuencia, arg.instrumento, arg.partitura, arg.output)
 
 if __name__ == '__main__':
-    sintetizar(44100,"instrument.txt","partitura.txt","output.wav")
+    sintetizar(44100,"instrument.txt","partitura.txt","output.wav") #testing function
 
 
-    # main()
+    # main() #for running with parser arguments
 
 
     
