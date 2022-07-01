@@ -5,14 +5,15 @@ class Instrument():
         with open (txt_instrumento,"r") as f:
             self.amplitude=[]
             counter=0
-            for line in f:
+            for line in f: #iterates over text file
                 if counter==0:
-                    self.num_harmonics=int(line.split()[0])
-        
+                    self.num_harmonics=int(line.split()[0]) #num harmonics
+
                 if counter!=0 and counter<=self.num_harmonics:
-                    self.amplitude.append(line.split()[1])
+                    self.amplitude.append(line.split()[1]) #aplitud corresponding to each harmonic
                 
-                if counter==self.num_harmonics+1:
+                #attack params
+                if counter==self.num_harmonics+1: #parameters vary from 0 to 3 so managing errors with try/except
                     self.attack=line.split()[0]
                     self.attack_parameters=[]
                     try:
@@ -27,8 +28,8 @@ class Instrument():
                         self.attack_parameters.append(float(line.split()[3]))
                     except IndexError:
                         pass
- 
-                if counter==self.num_harmonics+2:
+                #sustain params
+                if counter==self.num_harmonics+2: #parameters vary from 0 to 3 so managing errors with try/except
                     self.sustain=line.split()[0]
                     self.sustain_parameters=[]
                     try:
@@ -43,8 +44,8 @@ class Instrument():
                         self.sustain_parameters.append(float(line.split()[2]))
                     except IndexError:
                         pass
-                    
-                if counter==self.num_harmonics+3:
+                #decay params   
+                if counter==self.num_harmonics+3: #parameters vary from 0 to 3 so managing errors with try/except
                     self.decay=line.split()[0]
                     self.decay_parameters=[]
                     try:
@@ -63,11 +64,12 @@ class Instrument():
                 counter+=1
 
     def get_num_harmonics(self):
-        return self.num_harmonics
+        return self.num_harmonics 
 
     def get_respective_amplitude(self,n_of_harmonic):
+        #get the multiplier of a specific harmonic
         try:
-            return self.amplitude[n_of_harmonic-1]
+            return self.amplitude[n_of_harmonic-1] #-1 as [0] is for harmonic number 1
         except IndexError:
             return f"The instrument has only {self.get_num_harmonics} harmonics"
   
