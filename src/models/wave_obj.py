@@ -1,7 +1,7 @@
 from __future__ import annotations
 import numpy as np
-from functions import translate_functions
-from src.models.instrument_obj import Instrument, get_attack
+from models.functions import translate_functions
+from models.instrument_obj import Instrument
 
 
 class Wave():

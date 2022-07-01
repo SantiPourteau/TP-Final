@@ -1,7 +1,7 @@
 import numpy as np
-from typing import List, Array
+from typing import List
 
-def translate_functions(attack: str, att_parameters: List, los_x: Array):
+def translate_functions(attack: str, att_parameters: List, los_x):
     if attack == 'CONSTANT':
         return 1
     if attack == 'LINEAR':
