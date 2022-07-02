@@ -19,7 +19,7 @@ class Music_Sheet():
                 if line.split()[1] not in notes_mapping_dict:
                     raise ValueError("Note not supported by sinthesizer")
 
-            data=sorted(data,key=lambda inner_list: int(inner_list[0])) #sorted based on start time
+            data=sorted(data,key=lambda inner_list: float(inner_list[0])) #sorted based on start time
             if self.type == 1:
                 import models.note_obj
                 """
@@ -46,7 +46,7 @@ class Music_Sheet():
                             #generate a note for silence moments
                             time=float(time)+float(duration)
                             note="None"
-                            duration=abs(float(time)-int(elem[0]))
+                            duration=abs(float(time)-float(elem[0]))
                             self.notes.append(models.note_obj.Note(time,note,duration))
                             
                             #generate note after silence
