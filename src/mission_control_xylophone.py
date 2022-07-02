@@ -14,6 +14,7 @@ def interact(music_sheet,device):
     """
     device = Device(device,HOST,PORT)
     sheet = Music_Sheet(music_sheet,2)
+    print('loading client...')
     client = XyloClient(device.get_host(),device.get_port()) 
     client.load(sheet.get_note())
     client.play()
@@ -28,7 +29,6 @@ def main() -> None:
     interact(arg.sheet, arg.device)
 
 if __name__ == '__main__':
-    interact('queen.txt','kitty')
     main()
     
 
