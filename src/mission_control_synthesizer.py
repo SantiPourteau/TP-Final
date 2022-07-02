@@ -9,7 +9,7 @@ from models.synthesizer_obj import Synthesizer
 def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
     #object instances created
     instrument=Instrument(instrument_txt)
-    music_sheet=Music_Sheet(music_sheet_txt)
+    music_sheet=Music_Sheet(music_sheet_txt,1)
     synthesizer=Synthesizer(output)
 
     contador=0
