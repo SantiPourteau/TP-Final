@@ -9,7 +9,7 @@ class Music_Sheet():
             data=[]
             for line in f:
                 data.append(line.split()) #list of lists created
-            data=sorted(data,key=lambda inner_list: inner_list[0]) #sorted based on start time
+            data=sorted(data,key=lambda inner_list: int(inner_list[0])) #sorted based on start time
             contador=0
             for elem in data: #iteration over data to create instances of note object
                 if contador==0: 
