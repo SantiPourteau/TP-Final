@@ -1,5 +1,4 @@
-import models.note_obj
-from xylophone.xylophone.xylo.note import XyloNote
+
 DELTA = 0.00001
 VELOCITY = 90
 class Music_Sheet():
@@ -13,6 +12,7 @@ class Music_Sheet():
                 data.append(line.split()) #list of lists created
             data=sorted(data,key=lambda inner_list: int(inner_list[0])) #sorted based on start time
             if self.type == 1:
+                import models.note_obj
                 """
                 Filters the data from the Music Sheet to be used by the sinthesizer
                 """
@@ -46,6 +46,7 @@ class Music_Sheet():
 
                     contador+=1
             elif self.type == 2:
+                from xylophone.xylophone.xylo.note import XyloNote
                 """
                 Filters the data from the Music Sheet to be used by the Xylophone
                 """
