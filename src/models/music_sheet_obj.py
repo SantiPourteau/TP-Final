@@ -63,12 +63,12 @@ class Music_Sheet():
                 list = []
                 for _ in data:
                     if _[1] in accepted_notes: #checks if the xylophone can play the note
-                        list.append([int(_[0]),_[1]])
+                        list.append([float(_[0]),_[1]])
                     if _[1] not in accepted_notes:
-                        raise ValueError(f'{_[1]} is not in accepted notes')
+                        print(f'{_[1]} is not in accepted notes, removing it from Music Sheet...')
                 idx = 0
                 list_aux = list
-                while idx+1 < len(list_aux): #filters the notes 
+                while idx+1 < len(list_aux)-1: #filters the notes 
                     if list[idx][0] == list[idx+1][0] and list[idx][1] == list[idx+1][1]: #if the same note is played at the same time, one of the instances is deleted, 
                         list.pop(idx+1)
                     if list[idx][0] == list[idx+1][0] and list[idx][1] != list[idx+1][1]: #if different notes are played at the same time, one of the notes is moved by DELTA

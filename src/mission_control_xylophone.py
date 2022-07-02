@@ -28,7 +28,7 @@ def main() -> None:
     interact(arg.sheet, arg.device)
 
 if __name__ == '__main__':
-    interact('partitura.txt','kitty')
+    interact('queen.txt','kitty')
     main()
     
 
