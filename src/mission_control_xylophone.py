@@ -20,7 +20,7 @@ def interact(music_sheet,device):
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='xylophone')
-    parser.add_argument('-p', '--sheet', help='Music_Sheet that will be interpreted my Xylophone')
+    parser.add_argument('-p', '--sheet', help='Music_Sheet that will be interpreted')
     parser.add_argument('-d', '--device', help='Device that computer will connect to')
     
     arg = parser.parse_args()
