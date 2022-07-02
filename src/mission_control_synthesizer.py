@@ -16,7 +16,7 @@ def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
     for note in music_sheet.get_note(): #loop for each note already sorted and including silence notes
         wave=note.get_wave() #instance of wave created
         waveform=wave.get_waveform(frequency,instrument) #get waveform
-        waveform=wave.case_wave(instrument) #case that same waveform
+        #waveform=wave.case_wave(instrument,frequency) #case that same waveform
         if contador==0:
             waveform1=waveform
         if contador>0:

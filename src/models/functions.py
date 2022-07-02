@@ -1,35 +1,37 @@
 import numpy as np
 from typing import List
 
-def translate_functions(attack: str, att_parameters: List, los_x):
-    if attack == 'CONSTANT':
-        return 1
-    if attack == 'LINEAR':
-        return (los_x)/att_parameters[0]
-    if attack == 'INVLINEAR':
-        return 1 - ((los_x)/att_parameters[0])
-    if attack == 'SIN':
-        return 1 + (att_parameters[0]*np.sin(2*(np.pi)*(att_parameters[1]*los_x)))
-    if attack == 'EXP':
-        return np.exp((5*(los_x-att_parameters[0]))/att_parameters[0])
-    if attack == 'INVEXP':
-        return np.exp(-(5*(los_x))/att_parameters[0])
-    if attack == 'QUARTCOS':
-        return np.cos((np.pi*(los_x))/(2*att_parameters[0]))
-    if attack == 'QUARTSIN':
-        return np.sin((np.pi*(los_x))/(2*att_parameters[0]))
-    if attack == 'HALFCOS':
-        return (1+(np.cos((np.pi*(los_x))/(att_parameters[0]))))/2
-    if attack == 'HALFSIN':
-        return (1+(np.cos(np.pi*(((los_x)/(att_parameters[0]))-1))))/2
-    if attack == 'LOG':
-        return np.log10(((9*(los_x))/(att_parameters[0]))+1)
-    if attack == 'INVLOG':
-        if los_x < att_parameters[0]:
-            return np.log10((((-9)*(los_x))/(att_parameters[0]))+10)
-        return 0
-    if attack == 'TRI':
-        if los_x < att_parameters[1]:
-            return ((los_x)*(att_parameters[2]))/(att_parameters[1])
-        if los_x > att_parameters[1]:
-            return ( ((att_parameters[2])-1) * ( ((los_x)-(att_parameters[1])) / ((att_parameters[1])-(los_x)) ) ) + 1
+def translate_functions(modulation_type: str, modulation_parameters: List, x_value):
+    y=0
+    if modulation_type == 'CONSTANT':
+        y=1
+    if modulation_type == 'LINEAR':
+        y=(x_value)/modulation_parameters[0]
+    if modulation_type == 'INVLINEAR':
+        y=1 - ((x_value)/modulation_parameters[0])
+    if modulation_type == 'SIN':
+        y= 1 + (modulation_parameters[0]*np.sin(2*(np.pi)*(modulation_parameters[1]*x_value))) 
+    if modulation_type == 'EXP':
+        y=np.exp((5*(x_value-modulation_parameters[0]))/modulation_parameters[0])
+    if modulation_type == 'INVEXP':
+        y= np.exp(-(5*(x_value))/modulation_parameters[0])
+    if modulation_type == 'QUARTCOS':
+        y= np.cos((np.pi*(x_value))/(2*modulation_parameters[0]))
+    if modulation_type == 'QUARTSIN':
+        y= np.sin((np.pi*(x_value))/(2*modulation_parameters[0]))
+    if modulation_type == 'HALFCOS':
+        y=((1+(np.cos((np.pi*(x_value))/(modulation_parameters[0]))))/2)
+    if modulation_type == 'HALFSIN':
+        y=(1+(np.cos(np.pi*(((x_value)/(modulation_parameters[0]))-1))))/2
+    if modulation_type == 'LOG':
+        y=(np.log10(((9*(x_value))/(modulation_parameters[0]))+1))
+    if modulation_type == 'INVLOG':
+        if x_value < modulation_parameters[0]:
+            y= np.log10((((-9)*(x_value))/(modulation_parameters[0]))+10)
+        y=0
+    if modulation_type == 'TRI':
+        if x_value < modulation_parameters[1]:
+            y=((x_value)*(modulation_parameters[2]))/(modulation_parameters[1])
+        if x_value > modulation_parameters[1]:
+            y=( ((modulation_parameters[2])-1) * ( ((x_value)-(modulation_parameters[1])) / ((modulation_parameters[1])-(x_value)) ) ) + 1
+    return y

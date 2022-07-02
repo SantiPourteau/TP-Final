@@ -1,3 +1,4 @@
+from notes_mapping import notes_mapping_dict
 
 DELTA = 0.00001
 VELOCITY = 90
@@ -15,6 +16,9 @@ class Music_Sheet():
             data=[]
             for line in f:
                 data.append(line.split()) #list of lists created
+                if line.split()[1] not in notes_mapping_dict:
+                    raise ValueError("Note not supported by sinthesizer")
+
             data=sorted(data,key=lambda inner_list: int(inner_list[0])) #sorted based on start time
             if self.type == 1:
                 import models.note_obj
