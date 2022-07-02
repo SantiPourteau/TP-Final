@@ -6,13 +6,14 @@ class Music_Sheet():
     #music sheet keep music sheet information
     def __init__(self, txt_sheet,type):
         self.note=[]
+        self.type = type
         with open(txt_sheet) as f: 
             
             data=[]
             for line in f:
                 data.append(line.split()) #list of lists created
             data=sorted(data,key=lambda inner_list: inner_list[0]) #sorted based on start time
-            if type == 1:
+            if self.type == 1:
                 contador=0
                 for elem in data: #iteration over data to create instances of note object
                     if contador==0: 
@@ -42,7 +43,7 @@ class Music_Sheet():
                             self.note.append(models.note_obj.Note(time,note,duration))
 
                     contador+=1
-            elif type == 2:
+            elif self.type == 2:
                 accepted_notes = ['C7','C#7','Cb7','B6','Bb6','A6','A#6','Ab6','G6','G#6','Gb6','F6','F#6','E6','Eb6','D6','D#6','Db6','C6','C#6','B5','Bb5','A5','A#5','Ab5','G5','F5','E5','Eb5','D5','D#5','Db5','C5','C#5','B4','Bb4','A4','A#4','Ab4','G4','G#4']
                 list = []
                 for _ in data:
@@ -52,11 +53,15 @@ class Music_Sheet():
                         raise ValueError(f'{_[1]} is not in accepted notes')
                 list_sort = sorted(list)
                 idx = 0
-                while idx+1 < len(list):
-                    if list_sort[idx][0] == list_sort[idx+1][0]:
+                list_aux = list_sort
+                while idx+1 < len(list_aux):
+                    if list_sort[idx][0] == list_sort[idx+1][0] and list_sort[idx][1] == list_sort[idx+1][1]:
+                        list_sort.pop(idx+1)
+                    if list_sort[idx][0] == list_sort[idx+1][0] and list_sort[idx][1] != list_sort[idx+1][1]:
                         list_sort[idx][0] += DELTA
                     idx += 1
                 list_final = sorted(list_sort)
+                print(list_final)
                 for _ in list_final:
                         self.note.append(XyloNote(_[1],_[0],VELOCITY))
             else:

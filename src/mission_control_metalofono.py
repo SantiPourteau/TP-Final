@@ -3,9 +3,6 @@ from models.music_sheet_obj import Music_Sheet
 from xylophone.xylophone.client import XyloClient
 from xylophone.xylophone.xylo import XyloNote
 
-
-
-
 def interact(music_sheet,device=None):
     """
     Interacts with a device
