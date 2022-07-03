@@ -2,10 +2,17 @@ from notes_mapping import notes_mapping_dict
 import models.wave_obj
 
 class Note():
-    #note instances are created in music sheet
-    def __init__(self,time,nota,duration):
+    def __init__(self,time,note,duration):
+        """
+        Class for musical notes
+
+        args:
+        time = start time of note
+        frequency = frequency of note
+        duration = duration of note
+        """
         self.time=time
-        self.frequency=notes_mapping_dict[nota] #gets the freq of note from dictionary of notes
+        self.frequency=notes_mapping_dict[note] #gets the freq of note from dictionary of notes
         self.duration=duration
 
     def get_frequency(self):

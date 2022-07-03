@@ -5,6 +5,12 @@ from models.functions import translate_functions
 
 class Wave():
     def __init__(self, note):
+        """
+        Class for waves
+
+        args:
+            note: Note object
+        """
         self.note = note
         self.waveform = None
 
