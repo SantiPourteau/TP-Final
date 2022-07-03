@@ -1,5 +1,5 @@
 import pytest 
-from note_obj import Note
+from src.models.note_obj import Note
 
 def test_note():
     #Test if the given note returns a frequency
