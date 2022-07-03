@@ -8,7 +8,7 @@ def translate_functions(modulation_type: str, modulation_parameters: List, x_val
     if modulation_type == 'LINEAR':
         y=(x_value/sps)/modulation_parameters[0]
     if modulation_type == 'INVLINEAR':
-        y= 1 - ((x_value/sps)/modulation_parameters[0])
+        y= max([(1 - ((x_value/sps)/modulation_parameters[0])),0])
     if modulation_type == 'SIN':
         y= 1 + (modulation_parameters[0]*np.sin(2*(np.pi)*(modulation_parameters[1]*(x_value/sps)))) 
     if modulation_type == 'EXP':
