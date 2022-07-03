@@ -6,13 +6,13 @@ def translate_functions(modulation_type: str, modulation_parameters: List, x_val
     if modulation_type == 'CONSTANT':
         y=1
     if modulation_type == 'LINEAR':
-        y=(x_value)/modulation_parameters[0]/sps
+        y=(x_value/sps)/modulation_parameters[0]
     if modulation_type == 'INVLINEAR':
-        y=1 - ((x_value)/modulation_parameters[0]/sps)
+        y= 1 - ((x_value/sps)/modulation_parameters[0])
     if modulation_type == 'SIN':
-        y= 1 + (modulation_parameters[0]*np.sin(2*(np.pi)*(modulation_parameters[1]*x_value/sps))) 
+        y= 1 + (modulation_parameters[0]*np.sin(2*(np.pi)*(modulation_parameters[1]*(x_value/sps)))) 
     if modulation_type == 'EXP':
-        y=np.exp((5*(x_value/sps-modulation_parameters[0]))/modulation_parameters[0])
+        y=np.exp((5*((x_value/sps)-modulation_parameters[0]))/modulation_parameters[0])
     if modulation_type == 'INVEXP':
         y= np.exp(-(5*(x_value/sps))/modulation_parameters[0])
     if modulation_type == 'QUARTCOS':
