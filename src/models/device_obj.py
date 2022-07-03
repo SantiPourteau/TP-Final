@@ -1,5 +1,13 @@
 class Device():
     def __init__(self, name,host,port):
+        """
+        Class for the Device the computer will connect to
+        
+        args:
+            - name
+            - host: IP address or host
+            - port
+        """
         self.name = name
         self.host = host
         self.port = port

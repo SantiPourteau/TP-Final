@@ -1,14 +1,23 @@
 import numpy as np
 from typing import List
 
-def translate_functions(modulation_type: str, modulation_parameters: List, x_value, sps):
+def translate_functions(modulation_type: str, modulation_parameters: List, x_value,sps):
+    """
+    Function that defines the attack, sustain and decay parts of each wave.
+
+    args:
+        - Modulation_Type: modulation name
+        - Modulation_Parameters: modulation parameters
+        - x_value: values for x
+        - sps: sample rate
+    """
     y=0
     if modulation_type == 'CONSTANT':
         y=1
     if modulation_type == 'LINEAR':
         y=(x_value/sps)/modulation_parameters[0]
     if modulation_type == 'INVLINEAR':
-        y = max((1 - ((x_value/sps)/modulation_parameters[0])), 0)
+        y= max([(1 - ((x_value/sps)/modulation_parameters[0])),0])
     if modulation_type == 'SIN':
         y= 1 + (modulation_parameters[0]*np.sin(2*(np.pi)*(modulation_parameters[1]*(x_value/sps)))) 
     if modulation_type == 'EXP':

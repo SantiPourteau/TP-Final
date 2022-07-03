@@ -1,8 +1,14 @@
 
 class Instrument():
-    #keeps all instrument information
-    def __init__(self, txt_instrumento):
-        with open (txt_instrumento,"r") as f:
+    
+    def __init__(self, txt_instrument):
+        """
+        Class for keeping all instrument information received
+
+        args:
+        txt_instrument: txt file that contains information for the instrument
+        """
+        with open (txt_instrument,"r") as f:
             self.amplitude=[]
             counter=0
             for line in f: #iterates over text file
@@ -10,7 +16,7 @@ class Instrument():
                     self.num_harmonics=int(line.split()[0]) #num harmonics
 
                 if counter!=0 and counter<=self.num_harmonics:
-                    self.amplitude.append(line.split()[1]) #aplitud corresponding to each harmonic
+                    self.amplitude.append(line.split()[1]) #amplitude corresponding to each harmonic
                 
                 #attack params
                 if counter==self.num_harmonics+1: #parameters vary from 0 to 3 so managing errors with try/except
