@@ -4,7 +4,7 @@ from models.instrument_obj import Instrument
 from models.music_sheet_obj import Music_Sheet
 from models.synthesizer_obj import Synthesizer
 
-
+A = 0.3
 
 def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
     
@@ -24,7 +24,7 @@ def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
             waveform1=np.append(waveform1,waveform) #appending notes in one same waveform
         contador+=1
         
-    waveform_quiet = waveform1 * 0.3 #contant A to manage instrument volume (base tenia 0.3 y probe con mas chico y va mejor creo)
+    waveform_quiet = waveform1 * A #contant A to manage instrument volume (base tenia 0.3 y probe con mas chico y va mejor creo)
     waveform = np.int16(waveform_quiet * 32767) #scaling amplitude (omiting this would round all amps to 0 when written in wav file)
 
     synthesizer.synthesize(waveform,frequency) #write in wave file through synthesizer
@@ -41,7 +41,7 @@ def main() -> None:
     sintetizar(arg.frecuencia, arg.instrumento, arg.partitura, arg.output)
 
 if __name__ == '__main__':
-    sintetizar(44100,"piano.txt","queen.txt","output.wav") #testing function
+    sintetizar(44100,"piano.txt","partitura.txt","output.wav") #testing function
 
 
     # main() #for running with parser arguments
