@@ -1,5 +1,6 @@
 from notes_mapping import notes_mapping_dict
 
+
 DELTA = 0.00001
 VELOCITY = 90
 class Music_Sheet():
@@ -27,8 +28,10 @@ class Music_Sheet():
                 """
                 counter = 0
                 for elem in data: #iteration over data to create instances of note object
+                    print(f'Counter:{counter}')
+                    print(elem)
                     if counter==0: 
-                        if float(elem[0]) == 0:
+                        if elem[0] == 0:
                             time,note,duration=elem[0],elem[1],elem[2]
                             self.notes.append(models.note_obj.Note(time,note,duration))
                         else:
@@ -39,7 +42,7 @@ class Music_Sheet():
                             time,note,duration=elem[0],elem[1],elem[2]
                             self.notes.append(models.note_obj.Note(time,note,duration)) 
                     if counter>0:
-                        if float(elem[0])==time+duration:                     
+                        if elem[0]==time+duration:                     
                             time,note,duration=elem[0],elem[1],elem[2]
                             self.notes.append(models.note_obj.Note(time,note,duration))
                         else:
@@ -55,7 +58,7 @@ class Music_Sheet():
 
                     counter+=1
             elif self.type == 2:
-                from xylophone.xylophone.xylo.note import XyloNote
+                from xylophone.xylo.note import XyloNote
                 """
                 Filters the data from the Music Sheet to be used by the Xylophone
                 """
