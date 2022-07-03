@@ -16,14 +16,14 @@ def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
     for note in music_sheet.get_note(): #loop for each note already sorted and including silence notes
         wave=note.get_wave() #instance of wave created
         waveform=wave.get_waveform(frequency,instrument) #get waveform
-        #waveform=wave.case_wave(instrument,frequency) #case that same waveform
+        waveform=wave.case_wave(instrument,frequency) #case that same waveform
         if contador==0:
             waveform1=waveform
         if contador>0:
             waveform1=np.append(waveform1,waveform) #appending notes in one same waveform
         contador+=1
         
-    waveform_quiet = waveform1 * 0.3 #contant A to manage instrument volume
+    waveform_quiet = waveform1 * 0.01 #contant A to manage instrument volume (base tenia 0.3 y probe con mas chico y va mejor creo)
     waveform = np.int16(waveform_quiet * 32767) #scaling amplitude (omiting this would round all amps to 0 when written in wav file)
 
     synthesizer.synthesize(waveform,frequency) #write in wave file through synthesizer
@@ -40,7 +40,7 @@ def main() -> None:
     sintetizar(arg.frecuencia, arg.instrumento, arg.partitura, arg.output)
 
 if __name__ == '__main__':
-    sintetizar(44100,"instrument.txt","partitura.txt","output.wav") #testing function
+    sintetizar(44100,"piano.txt","queen.txt","output.wav") #testing function
 
 
     # main() #for running with parser arguments
