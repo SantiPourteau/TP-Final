@@ -26,7 +26,7 @@ def main() -> None:
     
     arg = parser.parse_args()
 
-    interact(arg.sheet, arg.device)
+    interact(arg.music_sheet, arg.device)
 
 if __name__ == '__main__':
     main()

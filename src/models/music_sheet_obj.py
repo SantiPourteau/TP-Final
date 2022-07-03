@@ -17,9 +17,10 @@ class Music_Sheet():
         with open(txt_sheet) as f: 
             data=[]
             for line in f:
-                data.append(line.split()) #list of lists created
-                if line.split()[1] not in notes_mapping_dict:
-                    raise ValueError("Note not supported by sinthesizer")
+                if len(line) > 0:
+                    data.append(line.split()) #list of lists created
+                    if line.split()[1] not in notes_mapping_dict:
+                        raise ValueError("Note not supported by sinthesizer")
 
             data=sorted(data,key=lambda inner_list: float(inner_list[0])) #sorted based on start time
             if self.type == 1:
