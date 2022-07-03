@@ -22,7 +22,7 @@ class Wave():
 
 
         waveform=0
-        for i in range(instrument.get_num_harmonics()): #addition of harmonics
+        for i in range(1,instrument.get_num_harmonics()+1): #addition of harmonics
             m=float(instrument.get_respective_amplitude(i))#amp harmonic / multiplier
 
             waveform += m * np.sin(2 * np.pi * i * (each_sample_number) * freq_hz / sps)

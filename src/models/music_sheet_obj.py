@@ -30,7 +30,7 @@ class Music_Sheet():
                     print(f'Counter:{counter}')
                     print(elem)
                     if counter==0: 
-                        if int(elem[0]) == 0:
+                        if elem[0] == 0:
                             time,note,duration=elem[0],elem[1],elem[2]
                             self.notes.append(models.note_obj.Note(time,note,duration))
                         else:
