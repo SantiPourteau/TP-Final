@@ -44,9 +44,9 @@ class Wave():
         for i in range(len(self.waveform)):
             if i > 0 and i <= att_time:
                 self.waveform[i] = self.waveform[i]*(translate_functions(att_type, att_parameters, i, sps))
-            if i > att_time and i < dec_time:
+            if i > att_time and i < ((len(self.waveform))-dec_time):
                 self.waveform[i] = self.waveform[i]*(translate_functions(sust_type, sust_parameters, i, sps))
-            if i >= dec_time:
+            if i >= ((len(self.waveform))-dec_time):
                 self.waveform[i] = self.waveform[i]*(translate_functions(dec_type, dec_parameters, i, sps))
         return self.waveform
 
