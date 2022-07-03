@@ -7,6 +7,7 @@ from models.synthesizer_obj import Synthesizer
 
 
 def sintetizar(frequency, instrument_txt, music_sheet_txt, output):
+    
     #object instances created
     instrument=Instrument(instrument_txt)
     music_sheet=Music_Sheet(music_sheet_txt,1)
@@ -40,7 +41,7 @@ def main() -> None:
     sintetizar(arg.frecuencia, arg.instrumento, arg.partitura, arg.output)
 
 if __name__ == '__main__':
-    sintetizar(44100,"piano.txt","queen.txt","output.wav") #testing function
+    sintetizar(44100,"instrument.txt","partitura.txt","output.wav") #testing function
 
 
     # main() #for running with parser arguments

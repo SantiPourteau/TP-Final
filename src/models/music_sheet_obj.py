@@ -27,8 +27,10 @@ class Music_Sheet():
                 """
                 counter = 0
                 for elem in data: #iteration over data to create instances of note object
+                    print(f'Counter:{counter}')
+                    print(elem)
                     if counter==0: 
-                        if elem[0] == 0:
+                        if int(elem[0]) == 0:
                             time,note,duration=elem[0],elem[1],elem[2]
                             self.notes.append(models.note_obj.Note(time,note,duration))
                         else:
@@ -44,7 +46,7 @@ class Music_Sheet():
                             self.notes.append(models.note_obj.Note(time,note,duration))
                         else:
                             #generate a note for silence moments
-                            time=float(time)+float(duration)
+                            time=float(time)
                             note="None"
                             duration=abs(float(time)-float(elem[0]))
                             self.notes.append(models.note_obj.Note(time,note,duration))
