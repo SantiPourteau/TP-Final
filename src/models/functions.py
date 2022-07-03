@@ -2,6 +2,15 @@ import numpy as np
 from typing import List
 
 def translate_functions(modulation_type: str, modulation_parameters: List, x_value,sps):
+    """
+    Function that defines the attack, sustain and decay parts of each wave.
+
+    args:
+        - Modulation_Type: modulation name
+        - Modulation_Parameters: modulation parameters
+        - x_value: values for x
+        - sps: sample rate
+    """
     y=0
     if modulation_type == 'CONSTANT':
         y=1
