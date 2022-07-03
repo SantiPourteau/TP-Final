@@ -1,25 +1,41 @@
-from numpy import equal
 import pytest
 from src.models.instrument_obj import Instrument
+import os
 
 @pytest.fixture
 def txt_archive():
-    #It returns the file descriptor of a given txt file
-    #File descriptor is used so one can mention the given file 
-    fd = open('test_textfile.txt','r')
-    file = fd.fileno()
-    fd.close()
-    return file
+    #It returns the given path of the txt file
+    #/Users/benjavitale/Documents/GitHub/TP-Final/tests/test_texfile.txt
+    return os.path.abspath(os.path.join('tests','test_textfile.txt'))
 
-def blank_txt(txt_archive):
+def test_blank_txt(txt_archive):
     #Test the objects attributes given a blank test
     a = Instrument(txt_archive)
     assert a.get_num_harmonics() == None
-    assert a.get_respective_amplitude(a.get_num_harmonics()) == None 
+    assert a.get_respective_amplitude(None) == None 
     assert a.get_attack() == None
     assert a.get_sustain() == None 
     assert a.get_decay() == None
 
-def txt_with_one_note():
-    #Test the objects attributes with a given note
-    return 3
+def test_txt_with_one_note(txt_archive):
+    #Test the attributes given a complete txt
+    fd = open(txt_archive,'r')
+    backup = fd.read()
+    fd.close()
+    lines = ['3','1 1.2','2 0.9','3 0.5', 'TRI 0.5 5 3','CONSTANT 1 5 7', 'INVLINEAR 3 2 1']
+    fd = open(txt_archive,'r+')
+    for line in lines:
+        fd.write(line)
+        fd.write('\n')
+    
+    fd.close()
+    
+    b = Instrument(txt_archive)
+    assert b.get_num_harmonics() == 3
+    assert b.get_respective_amplitude(1) == '1.2' 
+    assert b.get_attack() == ['TRI', [0.5, 5.0, 3.0]]
+    assert b.get_sustain() == ['CONSTANT', [1.0, 5.0, 5.0]]
+    assert b.get_decay() == ['INVLINEAR',[3, 2, 1]]
+    fd = open(txt_archive,'w')
+    fd.write(backup)
+    fd.close()
