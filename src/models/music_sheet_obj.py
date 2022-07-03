@@ -25,35 +25,10 @@ class Music_Sheet():
             if self.type == 1:
                 import models.note_obj
                 #Filters the data from the Music Sheet to be used by the sinthesizer
-                counter = 0
                 for elem in data: #iteration over data to create instances of note object
-                    if counter==0: 
-                        if float(elem[0]) == 0:
-                            time,note,duration=elem[0],elem[1],elem[2]
-                            self.notes.append(models.note_obj.Note(time,note,duration))
-                        else:
-                            #generate a note for inicial silence
-                            time,note,duration=0,"None",elem[0]
-                            self.notes.append(models.note_obj.Note(time,note,duration))
-                            #note after silence
-                            time,note,duration=elem[0],elem[1],elem[2]
-                            self.notes.append(models.note_obj.Note(time,note,duration)) 
-                    if counter>0:
-                        if float(elem[0])==time+duration:                     
-                            time,note,duration=elem[0],elem[1],elem[2]
-                            self.notes.append(models.note_obj.Note(time,note,duration))
-                        else:
-                            #generate a note for silence moments
-                            time=float(time)
-                            note="None"
-                            duration=abs(float(time)-float(elem[0]))
-                            self.notes.append(models.note_obj.Note(time,note,duration))
-                            
-                            #generate note after silence
-                            time,note,duration=elem[0],elem[1],elem[2]
-                            self.notes.append(models.note_obj.Note(time,note,duration))
+                        time,note,duration=elem[0],elem[1],elem[2]
+                        self.notes.append(models.note_obj.Note(time,note,duration))
 
-                    counter+=1
             elif self.type == 2:
                 from xylophone.xylophone.xylo.note import XyloNote
                 #Filters the data from the Music Sheet to be used by the Xylophone

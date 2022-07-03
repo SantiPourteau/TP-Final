@@ -20,7 +20,7 @@ class Wave():
         duration_s = float(self.note.get_duration()) # Duration
         st=float(self.note.get_time()) #start time
         each_sample_number = np.arange(st*sps,(st*sps+duration_s * sps)) # x values array
-
+        
         
         waveform=0
         for i in range(1,instrument.get_num_harmonics()+1): #addition of harmonics
