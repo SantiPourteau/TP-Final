@@ -2,11 +2,7 @@ import pytest
 from src.models.instrument_obj import Instrument
 import os
 
-@pytest.fixture
-def txt_archive():
-    #It returns the given path of the txt file
-    #/Users/benjavitale/Documents/GitHub/TP-Final/tests/test_texfile.txt
-    return os.path.abspath(os.path.join('tests','test_textfile.txt'))
+
 
 def test_blank_txt(txt_archive):
     #Test the objects attributes given a blank test
