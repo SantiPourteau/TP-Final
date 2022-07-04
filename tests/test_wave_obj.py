@@ -6,12 +6,17 @@ from src.models.note_obj import Note
 import numpy as np
 
 
+c = Note(0,'A4',1)
+a = Wave(c)
+b = Instrument('instrument.txt')
 def test_wave_get_waveform():
     #Given the note A4, starting point 1 and duration 1 second. 
-    #Assert the given result to a.get_waveform
-    #Due to the handling of small numbers, requires use of inequalities
-    c = Note(1,'A4',1)
-    a = Wave(c)
-    b = Instrument('instrument.txt')
-    assert int(a.get_waveform(1,b)) <= round(-3.99695004e-13)
+    #Calculate the waveform and compared to a.get_waveform 
+    #Handling very small numbers required the use of inequalities and rounding
+    
+    assert int(a.get_waveform(1,b)) == 0
+
+
+def test_case_wave():
+    assert int(a.case_wave(b,1)) == 0
 
