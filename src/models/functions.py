@@ -9,7 +9,7 @@ def translate_functions(modulation_type: str, modulation_parameters: List, x_val
         - Modulation_Type: modulation name
         - Modulation_Parameters: modulation parameters
         - x_value: value for x  < x/sps would represent time in seconds >
-        - sps: sample rate per second
+        - sps: sample rate 
     """
     y=0
     if modulation_type == 'CONSTANT':
@@ -49,7 +49,7 @@ def translate_functions(modulation_type: str, modulation_parameters: List, x_val
         if x_value < modulation_parameters[0]:
             y= np.log10((((-9)*(x_value/sps))/(modulation_parameters[0]))+10)
         y=0
-        
+
     if modulation_type == 'TRI':
         if x_value < modulation_parameters[1]:
             y=((x_value/sps)*(modulation_parameters[2]))/(modulation_parameters[1])
