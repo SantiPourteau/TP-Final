@@ -10,7 +10,7 @@ c = Note(0,'A4',1)
 a = Wave(c)
 b = Instrument('instrument.txt')
 def test_wave_get_waveform():
-    #Given the note A4, starting point 1 and duration 1 second. 
+    #Given the note A4, starting point 0 and duration 1 second. 
     #Calculate the waveform and compared to a.get_waveform 
     #Handling very small numbers required the use of inequalities and rounding
     
