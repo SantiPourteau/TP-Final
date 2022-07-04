@@ -15,6 +15,13 @@ class Wave():
         self.waveform = None
 
     def get_waveform(self,frequency,instrument):
+        """
+        Function that gets the waveform for a specific frequency and the instrument
+
+        args:
+            - frequency: sample rate
+            - instrument: instance of Instrument Object
+        """
         sps = frequency  # Samples per second
         freq_hz = float(self.note.get_frequency()) # Frequency / pitch of the sine wave
         duration_s = float(self.note.get_duration()) # Duration
@@ -34,6 +41,13 @@ class Wave():
         return self.waveform
 
     def case_wave(self, instrument,frequency):
+        """
+        Modifies the Attack, Sustain and Decay parts of the wave
+
+        args:
+            - instrument: instance of Instrument Object
+            - frequency: Sample Rate
+        """
         if self.note.get_frequency() == 0:
             return self.waveform
 

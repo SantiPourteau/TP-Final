@@ -14,7 +14,7 @@ def interact(music_sheet,device):
     """
     device = Device(device,HOST,PORT)
     sheet = Music_Sheet(music_sheet,2)
-    print('loading client...')
+    print('Loading Client...')
     client = XyloClient(device.get_host(),device.get_port()) 
     client.load(sheet.get_note())
     client.play()

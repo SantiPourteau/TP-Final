@@ -17,13 +17,15 @@ class Note():
 
     def get_frequency(self):
         return self.frequency
+
     def get_time(self):
         return self.time
+
     def get_duration(self):
         return self.duration
     
     def get_wave(self):
-        ##instance of wave created
+        #instance of wave created
         return models.wave_obj.Wave(self)
     
     
