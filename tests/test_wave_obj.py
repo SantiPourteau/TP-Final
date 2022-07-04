@@ -18,5 +18,6 @@ def test_wave_get_waveform():
 
 
 def test_case_wave():
+    #test case wave with the same values
     assert int(a.case_wave(b,1)) == 0
 
