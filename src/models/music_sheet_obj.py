@@ -17,11 +17,11 @@ class Music_Sheet():
         with open(txt_sheet) as f: 
             data=[]
             for line in f:
-                if len(line)>0:
+                if len(line.strip('\n'))>0:
                     if line.split()[1] in notes_mapping_dict:
                         data.append(line.split()) #list of lists created
-                    if line.split()[1] not in notes_mapping_dict:
-                        (f"{line.split()[1]} not supported by sinthesizer, removing it from music sheet")
+                    elif line.split()[1] not in notes_mapping_dict:
+                        print(f"'{line.split()[1]}' not supported by sinthesizer, removing it from music sheet")
 
             
             if self.type == 1:
