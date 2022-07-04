@@ -14,7 +14,7 @@ def interact(music_sheet,device):
     """
     device = Device(device,HOST,PORT)
     sheet = Music_Sheet(music_sheet,2)
-    if len(music_sheet.get_note()) == 0:
+    if len(sheet.get_note()) == 0:
         print('There are no notes in the file received')
         raise SystemExit()
     print('Loading Client...')
