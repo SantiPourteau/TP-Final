@@ -1,6 +1,6 @@
 from __future__ import annotations
 import numpy as np
-from models.functions import translate_functions
+from src.models.functions import translate_functions
 
 
 class Wave():
@@ -15,18 +15,23 @@ class Wave():
         self.waveform = None
 
     def get_waveform(self,frequency,instrument):
+        """
+        Function that gets the waveform for a specific frequency and the instrument
+
+        args:
+            - frequency: sample rate
+            - instrument: instance of Instrument Object
+        """
         sps = frequency  # Samples per second
         freq_hz = float(self.note.get_frequency()) # Frequency / pitch of the sine wave
         duration_s = float(self.note.get_duration()) # Duration
         st=float(self.note.get_time()) #start time
         each_sample_number = np.arange(st*sps,(st*sps+duration_s * sps)) # x values array
-
         if self.note.get_frequency()==0:
-            shape=len(each_sample_number)
+            shape = len(each_sample_number)
             self.waveform=np.zeros(shape)
             return self.waveform
-
-
+        
         waveform=0
         for i in range(1,instrument.get_num_harmonics()+1): #addition of harmonics
             m=float(instrument.get_respective_amplitude(i))#amp harmonic / multiplier
@@ -36,7 +41,14 @@ class Wave():
         return self.waveform
 
     def case_wave(self, instrument,frequency):
-        if self.note.get_frequency()==0:
+        """
+        Modifies the Attack, Sustain and Decay parts of the wave
+
+        args:
+            - instrument: instance of Instrument Object
+            - frequency: Sample Rate
+        """
+        if self.note.get_frequency() == 0:
             return self.waveform
 
         sps = frequency

@@ -1,7 +1,7 @@
 import argparse
-from models.music_sheet_obj import Music_Sheet
-from xylophone.xylophone.client import XyloClient
-from models.device_obj import Device
+from src.models.music_sheet_obj import Music_Sheet
+from src.xylophone.client import XyloClient
+from src.models.device_obj import Device
 HOST = '10.42.0.1'
 PORT = 8080
 def interact(music_sheet,device):
@@ -14,7 +14,7 @@ def interact(music_sheet,device):
     """
     device = Device(device,HOST,PORT)
     sheet = Music_Sheet(music_sheet,2)
-    print('loading client...')
+    print('Loading Client...')
     client = XyloClient(device.get_host(),device.get_port()) 
     client.load(sheet.get_note())
     client.play()

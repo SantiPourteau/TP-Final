@@ -1,5 +1,5 @@
-from notes_mapping import notes_mapping_dict
-import models.wave_obj
+from src.notes_mapping import notes_mapping_dict
+import src.models.wave_obj
 
 class Note():
     def __init__(self,time,note,duration):
@@ -17,14 +17,16 @@ class Note():
 
     def get_frequency(self):
         return self.frequency
+
     def get_time(self):
         return self.time
+
     def get_duration(self):
         return self.duration
     
     def get_wave(self):
-        ##instance of wave created
-        return models.wave_obj.Wave(self)
+        #instance of wave created
+        return src.models.wave_obj.Wave(self)
     
     
 

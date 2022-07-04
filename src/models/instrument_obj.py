@@ -1,6 +1,5 @@
 
 class Instrument():
-    
     def __init__(self, txt_instrument):
         """
         Class for keeping all instrument information received
