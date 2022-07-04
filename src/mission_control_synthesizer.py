@@ -5,7 +5,7 @@ from models.music_sheet_obj import Music_Sheet
 from models.synthesizer_obj import Synthesizer
 from time import time
 
-A = 0.025
+A = 0.01
 
 def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
     """
@@ -18,7 +18,7 @@ def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
         - output: Output file
     """
     #object instances created
-    print(f'Synthesizing {music_sheet}...')
+    print(f'Synthesizing {music_sheet_txt}...')
     instrument=Instrument(instrument_txt)
     music_sheet=Music_Sheet(music_sheet_txt,1)
     synthesizer=Synthesizer(output)
