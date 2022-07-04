@@ -1,6 +1,6 @@
 from __future__ import annotations
 import numpy as np
-from models.functions import translate_functions
+from src.models.functions import translate_functions
 
 
 class Wave():

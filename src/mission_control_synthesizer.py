@@ -1,8 +1,8 @@
 import argparse
 import numpy as np
-from models.instrument_obj import Instrument
-from models.music_sheet_obj import Music_Sheet
-from models.synthesizer_obj import Synthesizer
+from src.models.instrument_obj import Instrument
+from src.models.music_sheet_obj import Music_Sheet
+from src.models.synthesizer_obj import Synthesizer
 from time import time
 
 A = 0.025
@@ -56,7 +56,7 @@ def main() -> None:
 
     arg = parser.parse_args()
 
-    synthesizer_method(arg.frequency, arg.instrument, arg.music_sheet, arg.output)
+    synthesizer_method(int(arg.frequency), arg.instrument, arg.music_sheet, arg.output)
 
 if __name__ == '__main__':
     start = time()

@@ -1,4 +1,4 @@
-from notes_mapping import notes_mapping_dict
+from src.notes_mapping import notes_mapping_dict
 
 DELTA = 0.00001
 VELOCITY = 90
@@ -25,14 +25,14 @@ class Music_Sheet():
 
             
             if self.type == 1:
-                import models.note_obj
+                import src.models.note_obj
                 #Filters the data from the Music Sheet to be used by the sinthesizer
                 for elem in data: #iteration over data to create instances of note object
                         time,note,duration=elem[0],elem[1],elem[2]
-                        self.notes.append(models.note_obj.Note(time,note,duration))
+                        self.notes.append(src.models.note_obj.Note(time,note,duration))
 
             elif self.type == 2:
-                from xylophone.xylo.note import XyloNote
+                from src.xylophone.xylo.note import XyloNote
                 #Filters the data from the Music Sheet to be used by the Xylophone
                 data=sorted(data,key=lambda inner_list: float(inner_list[0])) #sorted based on start time
                 accepted_notes = ['C7','C#7','Cb7','B6','Bb6','A6','A#6','Ab6','G6','G#6','Gb6','F6','F#6','E6','Eb6','D6','D#6','Db6','C6','C#6','B5','Bb5','A5','A#5','Ab5','G5','F5','E5','Eb5','D5','D#5','Db5','C5','C#5','B4','Bb4','A4','A#4','Ab4','G4','G#4']
