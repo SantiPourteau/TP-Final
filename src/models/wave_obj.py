@@ -20,13 +20,11 @@ class Wave():
         duration_s = float(self.note.get_duration()) # Duration
         st=float(self.note.get_time()) #start time
         each_sample_number = np.arange(st*sps,(st*sps+duration_s * sps)) # x values array
-
         if self.note.get_frequency()==0:
-            shape=len(each_sample_number)
+            shape = len(each_sample_number)
             self.waveform=np.zeros(shape)
             return self.waveform
-
-
+        
         waveform=0
         for i in range(1,instrument.get_num_harmonics()+1): #addition of harmonics
             m=float(instrument.get_respective_amplitude(i))#amp harmonic / multiplier
@@ -36,7 +34,7 @@ class Wave():
         return self.waveform
 
     def case_wave(self, instrument,frequency):
-        if self.note.get_frequency()==0:
+        if self.note.get_frequency() == 0:
             return self.waveform
 
         sps = frequency

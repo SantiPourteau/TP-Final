@@ -1,6 +1,6 @@
 import argparse
 from models.music_sheet_obj import Music_Sheet
-from xylophone.xylophone.client import XyloClient
+from xylophone.client import XyloClient
 from models.device_obj import Device
 HOST = '10.42.0.1'
 PORT = 8080
