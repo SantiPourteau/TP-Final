@@ -39,8 +39,8 @@ def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
             waveform_final[i]=waveform_final[i]+waveform[counter]
             counter+=1
         
-    waveform_quiet = waveform_final * A #constant A to manage instrument volume (base tenia 0.3 y probe con mas chico y va mejor creo)
-    waveform = np.int16(waveform_quiet * 32767) #scaling amplitude (omiting this would round all amps to 0 when written in wav file)
+    waveform_final = waveform_final * A #constant A to manage instrument volume (base tenia 0.3 y probe con mas chico y va mejor creo)
+    waveform = np.int16(waveform_final * 32767) #scaling amplitude (omiting this would round all amps to 0 when written in wav file)
 
     synthesizer.synthesize(waveform,frequency) #write in wave file through synthesizer
 

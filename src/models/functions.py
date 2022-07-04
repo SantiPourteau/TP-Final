@@ -8,8 +8,8 @@ def translate_functions(modulation_type: str, modulation_parameters: List, x_val
     args:
         - Modulation_Type: modulation name
         - Modulation_Parameters: modulation parameters
-        - x_value: values for x
-        - sps: sample rate
+        - x_value: value for x  < x/sps would represent time in seconds >
+        - sps: sample rate per second
     """
     y=0
     if modulation_type == 'CONSTANT':
