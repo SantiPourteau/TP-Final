@@ -18,11 +18,13 @@ def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
         - output: Output file
     """
     #object instances created
-    print(f'Synthesizing {music_sheet_txt}...')
     instrument=Instrument(instrument_txt)
     music_sheet=Music_Sheet(music_sheet_txt,1)
     synthesizer=Synthesizer(output)
-    
+    if len(music_sheet.get_note()) == 0:
+        print('There are no notes in the file received')
+        raise SystemExit()
+    print(f'Synthesizing {music_sheet_txt}...')
     lastnote=music_sheet.get_note()[-1] #gets the last note of the music sheet
     shape=int(frequency*(float(lastnote.get_time())+float(lastnote.get_duration()))) 
     waveform_final=np.zeros(shape) #generates a np array for the duration of song
