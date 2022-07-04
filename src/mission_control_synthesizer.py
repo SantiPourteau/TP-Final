@@ -3,8 +3,9 @@ import numpy as np
 from models.instrument_obj import Instrument
 from models.music_sheet_obj import Music_Sheet
 from models.synthesizer_obj import Synthesizer
+from time import time
 
-A = 0.1
+A = 0.05
 
 def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
     """
@@ -28,7 +29,7 @@ def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
     for note in music_sheet.get_note(): #loop for each note already sorted and including silence notes
         wave=note.get_wave() #instance of wave created
         waveform=wave.get_waveform(frequency,instrument) #get waveform
-        #waveform=wave.case_wave(instrument,frequency) #case that same waveform
+        waveform=wave.case_wave(instrument,frequency) #case that same waveform
         
         startt=frequency*float(note.get_time())
         stopp=startt + frequency*float(note.get_duration())
@@ -57,7 +58,11 @@ def main() -> None:
     synthesizer_method(arg.frequency, arg.instrument, arg.music_sheet, arg.output)
 
 if __name__ == '__main__':
+    start = time()
+    print(start)
     synthesizer_method(44100,"piano.txt","queen.txt","output.wav") #testing function
+    end = time()
+    print(end-start)
 
 
     # main() #for running with parser arguments
