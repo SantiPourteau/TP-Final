@@ -5,14 +5,14 @@ from models.music_sheet_obj import Music_Sheet
 from models.synthesizer_obj import Synthesizer
 from time import time
 
-A = 0.05
+A = 0.025
 
 def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
     """
     Runs the main commands to synthesize the notes from the music_sheet
 
     args:
-        - frequency
+        - frequency: sample rate
         - instrument_txt: txt file that contains information for the instrument
         - music_sheet_txt: txt file that contains information for the music_sheet
         - output: Output file
@@ -22,7 +22,7 @@ def synthesizer_method(frequency, instrument_txt, music_sheet_txt, output):
     music_sheet=Music_Sheet(music_sheet_txt,1)
     synthesizer=Synthesizer(output)
 
-    lastnote=music_sheet.get_note()[-1]
+    lastnote=music_sheet.get_note()[-1] #generates a np array for the duration of song
     shape=int(frequency*(float(lastnote.get_time())+float(lastnote.get_duration())))
     waveform_final=np.zeros(shape)
 
@@ -59,7 +59,6 @@ def main() -> None:
 
 if __name__ == '__main__':
     start = time()
-    print(start)
     synthesizer_method(44100,"piano.txt","queen.txt","output.wav") #testing function
     end = time()
     print(end-start)
