@@ -28,5 +28,9 @@ class Note():
         #instance of wave created
         return src.models.wave_obj.Wave(self)
     
+    def __eq__(self,other):
+        #To know is two objects are the same
+        return self.__dict__ == other.__dict__
+    
     
 
