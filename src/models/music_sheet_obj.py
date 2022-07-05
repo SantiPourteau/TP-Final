@@ -2,6 +2,7 @@ from src.notes_mapping import notes_mapping_dict
 
 DELTA = 0.00001
 VELOCITY = 90
+ACCEPTED_NOTES = ['C7','C#7','Cb7','B6','Bb6','A6','A#6','Ab6','G6','G#6','Gb6','F6','F#6','E6','Eb6','D6','D#6','Db6','C6','C#6','B5','Bb5','A5','A#5','Ab5','G5','F5','E5','Eb5','D5','D#5','Db5','C5','C#5','B4','Bb4','A4','A#4','Ab4','G4','G#4']
 class Music_Sheet():
     def __init__(self, txt_sheet,type):
         """
@@ -17,11 +18,19 @@ class Music_Sheet():
         with open(txt_sheet) as f: 
             data=[]
             for line in f:
-                if len(line)>0:
+                
+                if len(line.strip('\n'))>0:
                     if line.split()[1] in notes_mapping_dict:
-                        data.append(line.split()) #list of lists created
-                    if line.split()[1] not in notes_mapping_dict:
-                        (f"{line.split()[1]} not supported by sinthesizer, removing it from music sheet")
+                        try:
+                            float(line.split()[0])
+                            float(line.split()[2])
+                            data.append(line.split()) #list of lists created
+                        except ValueError:
+                            pass
+                    elif line.split()[1] not in notes_mapping_dict and type == 1:
+                        print(f"'{line.split()[1]}' not supported by sinthesizer, removing it from music sheet")
+                    elif line.split()[1] not in ACCEPTED_NOTES:
+                        print(f'{line.split()[1]} is not in accepted notes, removing it from Music Sheet...')
 
             
             if self.type == 1:
@@ -35,13 +44,10 @@ class Music_Sheet():
                 from src.xylophone.xylo.note import XyloNote
                 #Filters the data from the Music Sheet to be used by the Xylophone
                 data=sorted(data,key=lambda inner_list: float(inner_list[0])) #sorted based on start time
-                accepted_notes = ['C7','C#7','Cb7','B6','Bb6','A6','A#6','Ab6','G6','G#6','Gb6','F6','F#6','E6','Eb6','D6','D#6','Db6','C6','C#6','B5','Bb5','A5','A#5','Ab5','G5','F5','E5','Eb5','D5','D#5','Db5','C5','C#5','B4','Bb4','A4','A#4','Ab4','G4','G#4']
                 list = []
                 for _ in data:
-                    if _[1] in accepted_notes: #checks if the xylophone can play the note
+                    if _[1] in ACCEPTED_NOTES: #checks if the xylophone can play the note
                         list.append([float(_[0]),_[1]])
-                    if _[1] not in accepted_notes:
-                        print(f'{_[1]} is not in accepted notes, removing it from Music Sheet...')
                 idx = 0
                 list_aux = list
                 while idx+1 < len(list_aux)-1: #filters the notes 

@@ -61,13 +61,7 @@ def main() -> None:
     synthesizer_method(int(arg.frequency), arg.instrument, arg.music_sheet, arg.output)
 
 if __name__ == '__main__':
-    start = time()
-    synthesizer_method(44100,"piano.txt","queen.txt","output.wav") #testing function
-    end = time()
-    print(end-start)
-
-
-    # main() #for running with parser arguments
+    main() #for running with parser arguments
 
 
     
