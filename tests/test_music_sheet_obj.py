@@ -1,6 +1,7 @@
 import pytest 
 from src.models.music_sheet_obj import Music_Sheet
 from src.models.note_obj import Note
+from src.xylophone.xylo.note import XyloNote
 
 
 
@@ -30,9 +31,28 @@ def test_type_1(txt_archive):
     fd.close()
   
 
-'''
-def test_type_2():
-    a = Music_Sheet('partitura.txt',2)
-    assert a.get_note() == 0
-'''   
+
+def test_type_2(txt_archive):
+    #test if get_note() for the xylophone returns an instance of XyloNote
+    fd = open(txt_archive,'r')
+    backup = fd.read()
+    fd.close()
+    lines = ['0 G4 5','0 A4 5']
+    fd = open(txt_archive,'r+')
+    for line in lines:
+        fd.write(line)
+        fd.write('\n')
+    fd.close()
+    a = Music_Sheet(txt_archive,2)
+    
+    
+    assert isinstance(a.get_note()[0],XyloNote)
+    assert isinstance(a.get_note()[1],XyloNote)
+    
+    
+    fd = open(txt_archive,'w')
+    fd.write(backup)
+    fd.close()
+
+
    
