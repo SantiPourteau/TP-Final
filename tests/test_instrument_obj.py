@@ -5,14 +5,11 @@ import os
 
 
 def test_blank_txt(txt_archive):
-    #Test the objects attributes given a blank test
-    a = Instrument(txt_archive)
-    assert a.get_num_harmonics() == None
-    assert a.get_respective_amplitude(None) == None 
-    assert a.get_attack() == None
-    assert a.get_sustain() == None 
-    assert a.get_decay() == None
-
+    #Test the object given a blank test
+    
+    with pytest.raises(SystemExit):
+        Instrument(txt_archive)
+ 
 def test_txt_with_one_note(txt_archive):
     #Test the attributes given a complete txt
     fd = open(txt_archive,'r')
